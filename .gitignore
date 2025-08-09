@@ -3,8 +3,8 @@
 _MACOSX
 
 # Xcode
-PCL.Mac.xcodeproj/xcuserdata
-PCL.Mac.xcodeproj/project.xcworkspace/xcuserdata
+ResponseViewer.xcodeproj/xcuserdata
+ResponseViewer.xcodeproj/project.xcworkspace/xcuserdata
 
 # Secrets
 Secrets.xcconfig
