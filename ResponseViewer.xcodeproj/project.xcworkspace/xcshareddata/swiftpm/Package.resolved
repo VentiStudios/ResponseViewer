@@ -1,0 +1,24 @@
+{
+  "originHash" : "03bd095c3d622c06507a1bc5a5d7302bf93861b8cc9cf085c3316d2620d973c6",
+  "pins" : [
+    {
+      "identity" : "swiftuiwindowbinder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/happycodelucky/SwiftUIWindowBinder",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4aec0ff2ed78b99cc000259bdd4cefc8c18aa8c4"
+      }
+    },
+    {
+      "identity" : "swiftyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyJSON/SwiftyJSON",
+      "state" : {
+        "revision" : "af76cf3ef710b6ca5f8c05f3a31307d44a3c5828",
+        "version" : "5.0.2"
+      }
+    }
+  ],
+  "version" : 3
+}

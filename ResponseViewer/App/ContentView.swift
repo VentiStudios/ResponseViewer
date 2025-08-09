@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var focusManager = FocusManager.shared
+    @StateObject var focusManager: FocusManager = .init()
+    @StateObject var dataManager: DataManager = .init()
     
     var body: some View {
         VStack(spacing: 0) {
             TitleBar()
-            Rectangle()
+            ResponseView()
         }
         .environmentObject(focusManager)
+        .environmentObject(dataManager)
         .contentShape(Rectangle())
         .onTapGesture {
-            FocusManager.shared.focusedView = nil
+            focusManager.focusedView = nil
         }
     }
 }

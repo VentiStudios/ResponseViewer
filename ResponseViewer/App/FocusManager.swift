@@ -13,8 +13,5 @@ enum FocusableView: Hashable {
 }
 
 class FocusManager: ObservableObject {
-    static let shared: FocusManager = .init()
     @Published var focusedView: FocusableView?
-    
-    private init() {}
 }

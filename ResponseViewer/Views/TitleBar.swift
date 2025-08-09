@@ -6,17 +6,31 @@
 //
 
 import SwiftUI
+import SwiftUIWindowBinder
 
 struct TitleBar: View {
+    @EnvironmentObject private var dataManager: DataManager
+    
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.background)
+                .fill(.ultraThickMaterial)
             DraggableArea()
             HStack {
                 WindowButtonGroup()
-                LocationField { _ in }
-                    .padding(.leading, 10)
+                LocationField { url in
+                    Task {
+                        let response = await Requests.get(url)
+                        let data = try response.getDataOrThrow()
+                        await MainActor.run {
+                            dataManager.response = ResponseModel(
+                                text: String(data: data, encoding: .utf8) ?? "解码失败",
+                                json: response.json
+                            )
+                        }
+                    }
+                }
+                .padding(.leading, 10)
             }
             .padding()
         }
@@ -25,17 +39,22 @@ struct TitleBar: View {
 }
 
 struct WindowButtonGroup: View {
+    @State var window: NSWindow?
     @State private var isHovered: Bool = false
     
     var body: some View {
-        HStack(spacing: 8) {
-            WindowButton(.closeButton, $isHovered)
-            WindowButton(.miniaturizeButton, $isHovered)
-            WindowButton(.zoomButton, $isHovered)
-        }
-        .contentShape(Rectangle())
-        .onHover { isHovered in
-            self.isHovered = isHovered
+        WindowBinder(window: $window) {
+            if let window = window {
+                HStack(spacing: 8) {
+                    WindowButton(.closeButton, window, $isHovered)
+                    WindowButton(.miniaturizeButton, window, $isHovered)
+                    WindowButton(.zoomButton, window, $isHovered)
+                }
+                .contentShape(Rectangle())
+                .onHover { isHovered in
+                    self.isHovered = isHovered
+                }
+            }
         }
     }
 }
@@ -43,12 +62,14 @@ struct WindowButtonGroup: View {
 struct WindowButton: View {
     @Binding private var isHovered: Bool
     private let type: NSWindow.ButtonType
+    private let window: NSWindow
     private let backgroundColor: Color
     private let foregroundColor: Color
     private let iconName: String
     
-    init(_ type: NSWindow.ButtonType, _ isHovered: Binding<Bool>) {
+    init(_ type: NSWindow.ButtonType, _ window: NSWindow, _ isHovered: Binding<Bool>) {
         self.type = type
+        self.window = window
         self._isHovered = isHovered
         
         self.backgroundColor = switch type {
@@ -89,13 +110,11 @@ struct WindowButton: View {
             }
         }
         .onTapGesture {
-            if let window = NSApplication.shared.windows.first {
-                switch type {
-                case .closeButton: window.close()
-                case .miniaturizeButton: window.miniaturize(nil)
-                case .zoomButton: window.zoom(nil)
-                default: let _: Any? = nil
-                }
+            switch type {
+            case .closeButton: window.close()
+            case .miniaturizeButton: window.miniaturize(nil)
+            case .zoomButton: window.zoom(nil)
+            default: let _: Any? = nil
             }
         }
     }

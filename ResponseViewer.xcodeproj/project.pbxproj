@@ -6,13 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EC9486442E472DEC00799142 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = EC9486432E472DEC00799142 /* SwiftyJSON */; };
+		EC94864E2E47303100799142 /* SwiftUIWindowBinder in Frameworks */ = {isa = PBXBuildFile; productRef = EC94864D2E47303100799142 /* SwiftUIWindowBinder */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		ECC7CFD22E46F89800C4FA1C /* ResponseViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResponseViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EC9487AC2E47357A00799142 /* Exceptions for "ResponseViewer" folder in "ResponseViewer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = ECC7CFD12E46F89800C4FA1C /* ResponseViewer */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		ECC7CFD42E46F89800C4FA1C /* ResponseViewer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EC9487AC2E47357A00799142 /* Exceptions for "ResponseViewer" folder in "ResponseViewer" target */,
+			);
 			path = ResponseViewer;
 			sourceTree = "<group>";
 		};
@@ -23,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC94864E2E47303100799142 /* SwiftUIWindowBinder in Frameworks */,
+				EC9486442E472DEC00799142 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +85,8 @@
 			);
 			name = ResponseViewer;
 			packageProductDependencies = (
+				EC9486432E472DEC00799142 /* SwiftyJSON */,
+				EC94864D2E47303100799142 /* SwiftUIWindowBinder */,
 			);
 			productName = ResponseViewer;
 			productReference = ECC7CFD22E46F89800C4FA1C /* ResponseViewer.app */;
@@ -94,6 +116,10 @@
 			);
 			mainGroup = ECC7CFC92E46F89800C4FA1C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EC9486422E472DEC00799142 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				EC94864C2E47303100799142 /* XCRemoteSwiftPackageReference "SwiftUIWindowBinder" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = ECC7CFD32E46F89800C4FA1C /* Products */;
 			projectDirPath = "";
@@ -254,6 +280,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ResponseViewer/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -280,6 +307,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ResponseViewer/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,6 +345,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC9486422E472DEC00799142 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		EC94864C2E47303100799142 /* XCRemoteSwiftPackageReference "SwiftUIWindowBinder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/happycodelucky/SwiftUIWindowBinder";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC9486432E472DEC00799142 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC9486422E472DEC00799142 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		EC94864D2E47303100799142 /* SwiftUIWindowBinder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC94864C2E47303100799142 /* XCRemoteSwiftPackageReference "SwiftUIWindowBinder" */;
+			productName = SwiftUIWindowBinder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECC7CFCA2E46F89800C4FA1C /* Project object */;
 }

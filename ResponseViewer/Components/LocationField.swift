@@ -25,6 +25,7 @@ struct LocationField: View {
                 .padding(6)
                 .onSubmit {
                     if let url = URL(string: location) {
+                        focusField = nil
                         onSubmit(url)
                     }
                 }
