@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct ResponseViewerApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -25,7 +27,9 @@ struct WindowAccessor: NSViewRepresentable {
             if let window = nsView.window {
                 window.isOpaque = false
                 window.backgroundColor = NSColor.clear
-                window.styleMask = [.miniaturizable, .resizable]
+                window.styleMask = [.miniaturizable, .resizable, .closable]
+                window.standardWindowButton(.miniaturizeButton)?.isHidden = false
+                window.standardWindowButton(.zoomButton)?.isHidden = false
                 
                 if let contentView = window.contentView {
                     contentView.wantsLayer = true
