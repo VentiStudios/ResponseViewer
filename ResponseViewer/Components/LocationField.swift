@@ -30,7 +30,7 @@ struct LocationField: View {
                 }
             RoundedRectangle(cornerRadius: 5)
                 .stroke((focusField == .location) ? .accent : .border)
-                .shadow(color: .accent, radius: (focusField == .location) ? 5 : 0)
+                .shadow(color: .accent.opacity(focusField == .location ? 1 : 0), radius: 5)
         }
         .fixedSize(horizontal: false, vertical: true)
         .animation(.spring(duration: 0.2), value: focusField == .location)
